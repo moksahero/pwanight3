@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>PWA night - 2019-04-17</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2><span class="no-transform">RoRからVueJS + Nuxt PWAに<br />置き換えてみた</span></h2>
+					<p>
+						Takeshi Amano</a> - <a href="https://www.devmetokyo.com">devMeTokyo</a>
+					</p>
+					<p>
+						PWA night vol.3<br>
+						2019-04-17 @ オイシックス
+					</p>
+				</section>
+
+				<section>
+					<h3>天野の紹介</h3>
+					<p class="fragment">広島出身</p>
+					<p class="fragment">カナダの大学卒業</p>
+					<p class="fragment">Gengoの初期メンバー</p>
+					<p class="fragment">PayPalのエンジニア</p>
+					<p class="fragment">現在devMeTokyo代表</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">devMeTokyo<span></h3>
+					<p class="fragment">チームはウクライナとベラルーシのチーム</p>
+					<p class="fragment">業務システム開発</p>
+					<p class="fragment">セキュリティー周り</p>
+					<p class="fragment">PWAの開発がんばってます</p>
+				</section>
+
+				<section>
+					<p><img src="/images/hasura_logo.png" /></p>
+					<p class="fragment">PostgresでGraphQLが扱える</p>
+					<p class="fragment">バックエンドエンジニアいらず</p>
+					<p class="fragment">先週インドでGraphQL Asiaに行ってました</p>
+					<p class="fragment">ステッカーいっぱいあります</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">Vue Storefront<span></h3>
+					<p><img src="/images/vuestorefront.jpg" /></p>
+				</section>
+
+				<section>
+					<h1>突然ですが</h1>
+				</section>
+
+				<section>
+					<h3>今日起きてからスマホで<br />何やりました？</h3>
+					<p class="fragment">Facebook</p>
+					<p class="fragment">インスタ</p>
+					<p class="fragment">Twitter</p>
+					<p class="fragment">Googleもろもろ...</p>
+					<p class="fragment">Amazon</p>
+				</section>
+
+				<section>
+					<h3>これらのサービスに共通してること</h3>
+					<p class="fragment">世界最速サービス</p>
+				</section>
+
+				<section>
+					<h3>ユーザーの期待値</h3>
+					<p class="fragment">常にオリンピックを見ている</p>
+					<p class="fragment">それ以外は県大会レベル以下</p>
+				</section>
+
+				<section>
+					<h3>Web開発者のミッション</h3>
+					<p class="fragment">少しでもオリンピックに近づけないといけない</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">PWA化で実現すること</span></h3>
+					<p class="fragment">サイトパフォーマンスが上がる</p>
+					<p class="fragment">UXがよくなる</p>
+					<p class="fragment">KPIもろもろ改善</p>
+					<p class="fragment">コンバージョン率 + 売上アップ</p>
+					<p class="fragment">少しでもオリンピックに近づく努力</p>
+				</section>
+
+				<section>
+					<p><img src="images/pwa_stats.png" /></p>
+				</section>
+
+				<section>
+					<p><strong>The Best Western River North Hotel</strong></p>
+					<p class="fragment">売り上げ -> 300%アップ</p>
+					<p class="fragment">宿泊日数 -> 500%アップ</p>
+				</section>
+
+				<section>
+					<h2><span class="no-transform">OpenSooq</span></h2>
+					<p class="fragment">PWAのサイズは28.3k</p>
+					<p class="fragment">滞在時間の平均 -> 25%アップ</p>
+					<p class="fragment">リード獲得数 -> 260%アップ</p>
+					<p class="fragment">ページダウンロード時間 -> 56%改善</p>
+				</section>
+
+				<section>
+					<h2><span class="no-transform">Pinterest</span></h2>
+					<p class="fragment">5分以上滞在したユーザー -> 40%アップ</p>
+					<p class="fragment">アクセスからの広告収入 -> 44%アップ</p>
+					<p class="fragment">広告のクリック数 -> 50%アップ</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">ITのプロジェクト</span></h3>
+					<p class="fragment strike">何か新しいことをやらないといけない？</p>
+					<p class="fragment">いまあるサイトを改良するとKPIや売上があがる</p>
+					<p class="fragment">既存のビジネスモデルを変える必要がない</p>
+					<p class="fragment">ROIが確実にとれる</p>
+				</section>
+
+				<section>
+					<h3>いま作ってるPWA</h3>
+					<p class="fragment">懇親会で動いているのもお見せします</p>
+				</section>
+
+				<section>
+					<h3>PWA置き換え</h3>
+					<p class="fragment">PHPやRubyなStackをモダンなJAM stackに置き換える</p>
+					<p class="fragment">RoRからVueJS + Nuxt PWAで置き換えている</p>
+				</section>
+
+				<section>
+					<h3>現状のスタック</h3>
+				</section>
+
+				<section>
+					<h3>置き換え後のスタック</h3>
+				</section>
+
+				<section>
+					<h3>置き換えの各レイヤー</h3>
+					<p class="fragment">UX改善: レスポンシブ -> スマホファースト</p>
+					<p class="fragment">フロントエンド: RoR -> Vue + Nuxt</p>
+					<p class="fragment">データ取得: RoR -> Lambda</p>
+					<p class="fragment">インフラ: EC2 -> S3 + Cloudfront</p>
+					<p class="fragment">DevOps: マニュアルデプロイ -> Gitlab CD/CI</p>
+					<p class="fragment">認証周り: 独自DB -> Auth0</p>
+					<p class="fragment">DB: MySQL RDS -> MySQL RDS</p>
+				</section>
+
+				<section>
+					<h3>UX改善<br />
+					レスポンシブ -> スマホファースト</h3>
+					<p class="fragment">70% - 80%はスマホからのアクセス</p>
+					<p class="fragment">パソコンブラウザ優先のレスポンシブはもうやめよう</p>
+					<p class="fragment">スマホ版を先に作る</p>
+					<p class="fragment">パソコン版は別に作る</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">フロントエンド<br />RoR -> VueJS + Nuxt</span></h3>
+					<p class="fragment">VueJSでコードをJSに置き換え</p>
+					<p class="fragment">NuxtのSSRで静的htmlを作ってSPAに比べてパフォーマンスアップ</p>
+					<p class="fragment">CSSのライブラリはBuefyを使用</p>
+					<p class="fragment">AndroidとiPhone別の対応はそれなりに必要</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">置き換え前のLighthouseスコア</span></h3>
+					<p><img src="/images/lighthousebefore.png" /></p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">置き換え後のLighthouseスコア</span></h3>
+					<p><img src="/images/lighthouseafter.png" /></p>
+				</section>
+
+				<section>
+					<h3>スピード改善</h3>
+					<p class="fragment">First Contentful Paint: 1.4s ->0.3s (4.6倍改善)</p>
+					<p class="fragment">First Meaningful Paint: 1.6s ->0.9s (1.8倍改善)</p>
+					<p class="fragment">Speed Index: 11.9s -> 1.0s (12倍改善)</p>
+					<p class="fragment">Time to interactive: 19.4s -> 0.8s (24倍改善)</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">データ取得: RoR -> Lambda</span></h3>
+					<p class="fragment">Lambdaでmodelもろもろを置き換える</p>
+					<p class="fragment">serverlessなのでアクセス増に対応</p>
+					<p class="fragment">EC2の構成では600人くらいで落ちていた</p>
+					<p class="fragment">重い画像はlamndaで動的に画像を小さくするライブラリを入れた</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">インフラ: EC2 -> S3 + Cloudfront</span></h3>
+					<p class="fragment">NuxtのSSRでhtmlファイルを作成</p>
+					<p class="fragment">Cloudfrontで各regionのS3のCDNにファイルを置く</p>
+					<p class="fragment">EC2を辞めたのでサーバー管理費が安くなった</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">認証周り: 独自実装 -> Auth0</span></h3>
+					<p class="fragment">Auth0にしてログイン周りの実装がシンプルに</p>
+					<p class="fragment">Custom databaseを使って既存のユーザーの移行可能</p>
+					<p class="fragment">日本語の対応はそれなりに必要</p>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">MySQL RDS</span></h3>
+					<p class="fragment">唯一いじらなかった所</p>
+					<p class="fragment">VPC peeringを使って新旧のAWS内にあるVPCを同期</p>
+					<p class="fragment">管理画面はEC2上のRoRでいまでも動いている</p>
+				</section>
+
+				<section>
+					<h3>各KPIの成果など</h3>
+					<p class="fragment">リリース後にまたお伝えします</p>
+				</section>
+
+				<section>
+					<h2><span class="no-transform">One more thing...</span></h2>
+				</section>
+
+				<section>
+					<h3><span class="no-transform">2007年1月 Macworld</span></h3>
+					<img src="/images/jobs.jpg" />
+				</section>
+
+				<section>
+					<p class="fragment">完璧に動作するSafariエンジンが<br />iPhoneの中にあります。</p>
+					<p class="fragment">iPhone上のアプリとまったく同じように動作する素晴らしいWeb 2.0とAjaxアプリケーションを作ることができます。</p>
+					<p class="fragment">これらのアプリはiPhoneサービスと完全に統合できます。そしてなんとSDKは必要ありません。</p>
+					<p class="fragment">最新のWeb標準の技術を知っているだけでiPhone用のすばらしいアプリケーションを作ることができます。今日から。</p>
+				</section>
+
+				<section>
+					<h3>しかし...</h3>
+					<p class="fragment">Safari上のWebアプリは流行らなかった</p>
+					<p class="fragment">2008年7月にApp Store開始</p>
+					<p class="fragment">iPhoneの最初の１年はApp Storeが無かった</p>
+				</section>
+
+				<section>
+					<h2>結論</h2>
+					<p class="fragment">やっぱりJobsは10年先を行っていた</p>
+					<p class="fragment">みなさんとこれからPWAを<br />盛り上げていきましょう！</p>
+				</section>
+
+				<section>
+					<h3>ありがとうございました</h3>
+					<p>amano@devmetokyo.com</p>
+					<p>https://twitter.com/moksahero</p>
+					<p>https://dev.to/moksahero</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

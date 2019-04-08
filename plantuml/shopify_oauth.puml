@@ -1,0 +1,15 @@
+@startuml
+autonumber
+title ShopifyのOauthフロー
+
+participant "callback.php (local)" as callback
+participant "redirect.php (local)" as redirect
+participant "Oauth (Shopify)" as oauth
+participant "アプリインストール画面 (Shopify)" as appinstall
+
+redirect -> oauth : APIキーをつけてOauthを呼ぶ
+oauth -> appinstall : アプリインストール画面
+appinstall -> appinstall : アプリの承認
+appinstall -> callback: accesskey付きで戻る
+
+@enduml
