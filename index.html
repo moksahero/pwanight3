@@ -42,7 +42,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h2><span class="no-transform">RoRからVueJS + Nuxt PWAに<br />置き換えてみた</span></h2>
+					<h2><span class="no-transform">RoRからVue + Nuxt PWAに<br />置き換えてみた</span></h2>
 					<p>
 						Takeshi Amano</a> - <a href="https://www.devmetokyo.com">devMeTokyo</a>
 					</p>
@@ -63,7 +63,7 @@
 
 				<section>
 					<h3><span class="no-transform">devMeTokyo<span></h3>
-					<p class="fragment">チームはウクライナとベラルーシのチーム</p>
+					<p class="fragment">ウクライナとベラルーシの開発チーム</p>
 					<p class="fragment">業務システム開発</p>
 					<p class="fragment">セキュリティー周り</p>
 					<p class="fragment">PWAの開発がんばってます</p>
@@ -71,10 +71,10 @@
 
 				<section>
 					<p><img src="images/hasura_logo.png" /></p>
-					<p class="fragment">PostgresでGraphQLが扱える</p>
+					<p class="fragment">Postgresの上でGraphQLが扱える</p>
 					<p class="fragment">バックエンドエンジニアいらず</p>
+					<p class="fragment">アプリ開発の工数が半分</p>
 					<p class="fragment">先週インドでGraphQL Asiaに行ってました</p>
-					<p class="fragment">ステッカーいっぱいあります</p>
 				</section>
 
 				<section>
@@ -101,6 +101,13 @@
 				</section>
 
 				<section>
+					<h3>PWA対応済み</h3>
+					<p>instagram.com</p>
+					<p>mobile.twitter.com</p>
+					<p>www.google.com/maps?force=pwa</p>
+				</section>
+
+				<section>
 					<h3>ユーザーの期待値</h3>
 					<p class="fragment">常にオリンピックを見ている</p>
 					<p class="fragment">それ以外は県大会レベル以下</p>
@@ -117,7 +124,6 @@
 					<p class="fragment">UXがよくなる</p>
 					<p class="fragment">KPIもろもろ改善</p>
 					<p class="fragment">コンバージョン率 + 売上アップ</p>
-					<p class="fragment">少しでもオリンピックに近づく努力</p>
 				</section>
 
 				<section>
@@ -141,7 +147,7 @@
 				<section>
 					<h2><span class="no-transform">Pinterest</span></h2>
 					<p class="fragment">5分以上滞在したユーザー -> 40%アップ</p>
-					<p class="fragment">アクセスからの広告収入 -> 44%アップ</p>
+					<p class="fragment">広告収入 -> 44%アップ</p>
 					<p class="fragment">広告のクリック数 -> 50%アップ</p>
 				</section>
 
@@ -154,22 +160,25 @@
 				</section>
 
 				<section>
-					<h3>いま作ってるPWA</h3>
-					<p class="fragment">懇親会で動いているのもお見せします</p>
+					<h3>PWA置き換え</h3>
+					<p class="fragment">PHPやRubyなStackをモダンなJAM stackに置き換え</p>
 				</section>
 
 				<section>
-					<h3>PWA置き換え</h3>
-					<p class="fragment">PHPやRubyなStackをモダンなJAM stackに置き換える</p>
-					<p class="fragment">RoRからVueJS + Nuxt PWAで置き換えている</p>
+					<h3>JAM Stack</h3>
+					<p class="fragment">J: Javascript -> Vue, React</p>
+					<p class="fragment">A: APIs -> GraphQL, REST</p>
+					<p class="fragment">M: Markup -> Nuxt, Gatsby (静的サイトジェネレータ)</p>
 				</section>
 
 				<section>
 					<h3>現状のスタック</h3>
+					<p><img src="images/ror_before.png" /></p>
 				</section>
 
 				<section>
 					<h3>置き換え後のスタック</h3>
+					<p><img src="images/pwa_after.png" /></p>
 				</section>
 
 				<section>
@@ -179,7 +188,7 @@
 					<p class="fragment">データ取得: RoR -> Lambda</p>
 					<p class="fragment">インフラ: EC2 -> S3 + Cloudfront</p>
 					<p class="fragment">DevOps: マニュアルデプロイ -> Gitlab CD/CI</p>
-					<p class="fragment">認証周り: 独自DB -> Auth0</p>
+					<p class="fragment">ユーザー認証: 独自DB -> Auth0</p>
 					<p class="fragment">DB: MySQL RDS -> MySQL RDS</p>
 				</section>
 
@@ -187,15 +196,15 @@
 					<h3>UX改善<br />
 					レスポンシブ -> スマホファースト</h3>
 					<p class="fragment">70% - 80%はスマホからのアクセス</p>
-					<p class="fragment">パソコンブラウザ優先のレスポンシブはもうやめよう</p>
 					<p class="fragment">スマホ版を先に作る</p>
 					<p class="fragment">パソコン版は別に作る</p>
+					<p class="fragment">パソコンブラウザ優先のレスポンシブではない</p>
 				</section>
 
 				<section>
-					<h3><span class="no-transform">フロントエンド<br />RoR -> VueJS + Nuxt</span></h3>
-					<p class="fragment">VueJSでコードをJSに置き換え</p>
-					<p class="fragment">NuxtのSSRで静的htmlを作ってSPAに比べてパフォーマンスアップ</p>
+					<h3><span class="no-transform">フロントエンド<br />RoR -> Vue + Nuxt</span></h3>
+					<p class="fragment">VueでコードをJSに置き換え</p>
+					<p class="fragment">NuxtのSSRで静的htmlを作って<br />SPAよりパフォーマンスアップ</p>
 					<p class="fragment">CSSのライブラリはBuefyを使用</p>
 					<p class="fragment">AndroidとiPhone別の対応はそれなりに必要</p>
 				</section>
@@ -223,7 +232,7 @@
 					<p class="fragment">Lambdaでmodelもろもろを置き換える</p>
 					<p class="fragment">serverlessなのでアクセス増に対応</p>
 					<p class="fragment">EC2の構成では600人くらいで落ちていた</p>
-					<p class="fragment">重い画像はlamndaで動的に画像を小さくするライブラリを入れた</p>
+					<p class="fragment">lamndaで動的に重い画像を<br />小さくできるURLを用意</p>
 				</section>
 
 				<section>
@@ -234,9 +243,9 @@
 				</section>
 
 				<section>
-					<h3><span class="no-transform">認証周り: 独自実装 -> Auth0</span></h3>
+					<h3><span class="no-transform">ユーザー認証: 独自実装 -> Auth0</span></h3>
 					<p class="fragment">Auth0にしてログイン周りの実装がシンプルに</p>
-					<p class="fragment">Custom databaseを使って既存のユーザーの移行可能</p>
+					<p class="fragment">Custom databaseを使って<br />既存のユーザーの移行可能</p>
 					<p class="fragment">日本語の対応はそれなりに必要</p>
 				</section>
 
@@ -248,7 +257,7 @@
 				</section>
 
 				<section>
-					<h3>各KPIの成果など</h3>
+					<h3>各KPIの改善など</h3>
 					<p class="fragment">リリース後にまたお伝えします</p>
 				</section>
 
